@@ -8,6 +8,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONPATH=/app
+      - ENV_FILE=.env.local
     volumes:
       - .:/app
     restart: unless-stopped
@@ -21,3 +22,4 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONPATH=/app
+      - ENV_FILE=.env.test
