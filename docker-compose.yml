@@ -2,24 +2,27 @@ services:
   app:
     build: .
     container_name: api_testing_app
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
     ports:
       - "8000:8000"
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONPATH=/app
-      - ENV_FILE=.env.local
+      - ENV_FILE=.env
+
     volumes:
-      - .:/app
+      - ./app:/app
+      - .env.local:/app/.env
     restart: unless-stopped
 
   test:
     build: .
     container_name: api_testing_test
-    command: pytest app/tests
+    command: pytest tests
     volumes:
-      - .:/app
+      - ./app:/app
+      - .env.test:/app/.env
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONPATH=/app
-      - ENV_FILE=.env.test
+      - ENV_FILE=.env

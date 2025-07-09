@@ -14,12 +14,12 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy and install Python dependencies
+# Copy app code requirements
+COPY ./app /app
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the app
-COPY . .
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Set permissions and switch to non-root
 RUN chown -R appuser:appgroup /app
