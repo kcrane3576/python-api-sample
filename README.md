@@ -18,7 +18,7 @@
 ```shell
     git checkout main && \
     git pull origin main && \
-    git checkout -b init && \
+    git checkout -b f-feature && \
     git merge main
 ```
 
