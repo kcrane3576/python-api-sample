@@ -8,12 +8,12 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONPATH=/app
-      - ENV_FILE=.env
-
     volumes:
       - ./app:/app
-      - .env.local:/app/.env
+      - .env:/app/.env
     restart: unless-stopped
+    depends_on:
+      - db
 
   test:
     build: .
@@ -21,8 +21,28 @@ services:
     command: pytest tests
     volumes:
       - ./app:/app
-      - .env.test:/app/.env
+      - .env:/app/.env
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONPATH=/app
-      - ENV_FILE=.env
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: api_testing_db
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      # Host:Container
+      - "${DB_HOST_BIND:-}:5432"
+
+volumes:
+  pg_data:

@@ -1,17 +1,17 @@
 # python-api-sample
 
-## docker
-### app
+## Local
+### Start App
 ```shell
-    docker compose down -v && \
-    docker system prune -af && \
-    docker compose up --build app
+    make local
 ```
-### tests
+### Run Tests
 ```shell
-    docker compose down -v && \
-    docker system prune -af && \
-    docker compose run --rm test
+    make test
+```
+### Clean Everything
+```shell
+    make clean
 ```
 
 ## branching
