@@ -3,10 +3,17 @@
 
 # Run development app
 local:
-	@ln -sf .env.local .env          		# swap to dev environment
-	@docker compose down -v         		# remove containers + volumes
-	@docker system prune -af --volumes  	# clean everything
-	@docker compose up --build app  		# rebuild and run app
+	# swap to dev environment
+	@ln -sf .env.local .env
+
+	# remove containers + volumes
+	@docker compose down -v
+
+	# clean everything
+	@docker system prune -af --volumes
+
+	# rebuild and run app
+	@docker compose up --build app
 
 # Run tests
 test:
