@@ -8,7 +8,7 @@ env_file = os.getenv("ENV_FILE", ".env")
 print(env_file)
 
 # Resolve path relative to project root
-env_path = Path(__file__).resolve().parent.parent.parent / env_file
+env_path = Path(__file__).resolve().parent.parent / env_file
 print(env_path)
 load_dotenv(dotenv_path=env_path)
 
