@@ -1,0 +1,21 @@
+name: CI with Docker and Pytest
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t api_testing_app -f Dockerfile .
+
+      - name: Run tests inside Docker
+        run: docker run --rm api_testing_app
