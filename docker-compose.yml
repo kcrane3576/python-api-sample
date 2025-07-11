@@ -18,7 +18,7 @@ services:
   test:
     build: .
     container_name: api_testing_test
-    command: pytest tests
+    command: pytest -s tests
     volumes:
       - ./app:/app
       - .env:/app/.env
