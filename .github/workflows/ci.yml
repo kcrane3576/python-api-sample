@@ -12,7 +12,7 @@ env:
   DB_USER: ${{ secrets.DB_USER }}
   DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
   DB_HOST: ${{ secrets.DB_HOST }}
-  ENV_FILE: .env.test
+  ENV_FILE: .env
 
 jobs:
   test:
@@ -22,16 +22,16 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Create .env file from secrets
+      - name: Create .env.test file from secrets
         run: |
-          cat <<EOF > .env
+          cat <<EOF > .env.test
           ENV=${{ secrets.ENV }}
           DB_NAME=${{ secrets.DB_NAME }}
           DB_USER=${{ secrets.DB_USER }}
           DB_PASSWORD=${{ secrets.DB_PASSWORD }}
           DB_HOST=${{ secrets.DB_HOST }}
           DB_HOST_BIND=${{ secrets.DB_HOST_BIND }}
-          ENV_FILE=.env
+          ENV_FILE=.env.test
           EOF
 
       - name: Set up Docker Buildx
