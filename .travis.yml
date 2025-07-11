@@ -1,0 +1,4 @@
+dist: focal
+language: python
+script: echo "Hello Travis CI"
+install: skip
