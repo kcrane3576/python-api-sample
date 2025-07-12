@@ -13,6 +13,7 @@ jobs:
 
     env:
       ENV: test
+      LOG_LEVEL: ${{ secrets.LOG_LEVEL }}
       DB_HOST: ${{ secrets.DB_HOST }}
       DB_HOST_BIND: ${{ secrets.DB_HOST_BIND }}
       DB_NAME: ${{ secrets.DB_NAME }}
@@ -27,6 +28,7 @@ jobs:
         run: |
           cat <<EOF > .env.test
           ENV=${ENV}
+          LOG_LEVEL=${LOG_LEVEL}
           DB_HOST=${DB_HOST}
           DB_NAME=${DB_NAME}
           DB_USER=${DB_USER}
