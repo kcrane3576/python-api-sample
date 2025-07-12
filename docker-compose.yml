@@ -1,39 +1,26 @@
 services:
   app:
     build: .
-    container_name: api_testing_app
     command: uvicorn main:app --host 0.0.0.0 --port 8000
     ports:
       - "8000:8000"
     environment:
-      - PYTHONUNBUFFERED=1
-      - PYTHONPATH=/app
+      PYTHONUNBUFFERED: 1
+      PYTHONPATH: /app
+      ENV: ${ENV}
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ./app:/app
-      - .env:/app/.env
     restart: unless-stopped
-    depends_on:
-      - db
-
-  test:
-    build: .
-    container_name: api_testing_test
-    command: pytest tests
-    volumes:
-      - ./app:/app
-      - .env:/app/.env
-    environment:
-      - PYTHONUNBUFFERED=1
-      - PYTHONPATH=/app
     depends_on:
       - db
 
   db:
     image: postgres:15
-    container_name: api_testing_db
     restart: unless-stopped
-    env_file:
-      - .env
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
