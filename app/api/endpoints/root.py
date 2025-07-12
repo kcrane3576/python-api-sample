@@ -1,8 +1,14 @@
+import logging
 from fastapi import APIRouter
 from core.config import settings
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
 @router.get("/")
 def read_root():
-    return {"message": f"Hello, {settings.ENV} World!"}
+    message = {"message": f"Hello, {settings.ENV} World!"}
+    logger.info(message)
+
+    return message
