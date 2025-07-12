@@ -7,7 +7,7 @@
 ```
 ### Run Tests
 ```shell
-    make test
+    APP_ENV=test make test
 ```
 ### Clean Everything
 ```shell
