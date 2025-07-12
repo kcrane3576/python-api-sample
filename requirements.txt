@@ -4,3 +4,4 @@ pytest
 uvicorn
 python-dotenv
 psycopg2-binary
+elasticsearch>=8,<9

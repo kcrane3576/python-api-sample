@@ -10,6 +10,7 @@ load_dotenv(dotenv_path=env_path)
 
 class Settings:
     ENV: str = ENV
+    ELASTICSEARCH_URL: str = os.getenv('ELASTICSEARCH_URL')
 
 settings = Settings()
 print(f"config | ENV: {settings.ENV}")
