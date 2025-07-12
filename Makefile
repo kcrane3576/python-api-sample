@@ -1,28 +1,30 @@
-# Declare targets that are not filenames
+# Default to local environment if not explicitly set
+APP_ENV ?= local
+
+# Docker Compose command with correct env file
+DC = docker compose --env-file .env.$(APP_ENV)
+
+# make setup
 .PHONY: local test clean
 
-# Run development app
+# Start app with environment-specific configuration
 local:
-	# swap to dev environment
-	@ln -sf .env.local .env
-
 	# remove containers + volumes
-	@docker compose down -v
+	@ENV=$(APP_ENV) $(DC) down -v
 
 	# clean everything
 	@docker system prune -af --volumes
 
 	# rebuild and run app
-	@docker compose up --build app
+	@ENV=$(APP_ENV) $(DC) up --build app
 
-# Run tests
+# Run test container with environment-specific config
 test:
-	@ln -sf .env.test .env
-	@docker compose down -v
+	@ENV=$(APP_ENV) $(DC) down -v
 	@docker system prune -af --volumes
-	@docker compose run --rm test
+	@ENV=$(APP_ENV) $(DC) run --rm app sh -c "pytest -s tests"
 
-# Clean everything
+# Clean volumes and images
 clean:
-	@docker compose down -v
+	@$(DC) down -v
 	@docker system prune -af --volumes
