@@ -2,7 +2,6 @@ import os
 import psycopg2
 import pytest
 
-# TODO fix file name
 def test_database_connection():
     db_name = os.getenv("DB_NAME")
     db_user = os.getenv("DB_USER")
