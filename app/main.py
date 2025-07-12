@@ -1,9 +1,11 @@
+from api.routes import register_routes
 from fastapi import FastAPI
-from core import config
 
+def create_app():
+    app = FastAPI()
 
-app = FastAPI()
+    register_routes(app)
 
-@app.get("/")
-def read_root():
-    return {"message": f"Hello, {config.settings.ENV} World!"}
+    return app
+
+app = create_app()
