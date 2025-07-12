@@ -22,7 +22,7 @@ local:
 test:
 	@$(DC) down -v
 	@docker system prune -af --volumes
-	@$(DC) run --rm app sh -c "pytest -s tests"
+	@$(DC) run --rm app sh -c "pytest -s -p no:cacheprovider tests"
 
 # Clean volumes and images
 clean:
