@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      ENV: test
       DB_HOST: ${{ secrets.DB_HOST }}
       DB_HOST_BIND: ${{ secrets.DB_HOST_BIND }}
       DB_NAME: ${{ secrets.DB_NAME }}
