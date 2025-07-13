@@ -20,7 +20,6 @@ jobs:
       DB_USER: ${{ secrets.DB_USER }}
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       ELASTICSEARCH_URL: ${{ secrets.ELASTICSEARCH_URL }}
-      DB_URL: ${{ secrets.DB_URL }}
 
     steps:
       - name: Checkout Repo
@@ -37,7 +36,6 @@ jobs:
           DB_PASSWORD=${DB_PASSWORD}
           DB_HOST_BIND=${DB_HOST_BIND}
           ELASTICSEARCH_URL=${ELASTICSEARCH_URL}
-          DB_URL=${DB_URL}
           EOF
 
       - name: Set up Docker Buildx

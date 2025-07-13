@@ -14,7 +14,6 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       ELASTICSEARCH_URL: ${ELASTICSEARCH_URL}
-      DB_URL: ${DB_URL}
     volumes:
       - ./app:/app
     restart: unless-stopped
