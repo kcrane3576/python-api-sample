@@ -4,6 +4,7 @@ from sqlalchemy import text
 from api.routes import register_routes
 from core. database import engine
 from core.logging_config import setup_logging
+from core.startup import init_db
 from services.elasticsearch import get_elasticsearch_client
 
 setup_logging()
@@ -11,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 def create_app():
     app = FastAPI()
+    init_db()
     register_routes(app)
     logger.info("App created successfully")
 
