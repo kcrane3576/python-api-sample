@@ -5,3 +5,4 @@ uvicorn
 python-dotenv
 psycopg2-binary
 elasticsearch>=8,<9
+sqlalchemy>=2.0,<3.0
