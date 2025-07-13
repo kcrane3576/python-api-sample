@@ -1,10 +1,10 @@
 import logging
 from fastapi import FastAPI
 from sqlalchemy import text
-from api.routes import register_routes
 from core. database import engine
 from core.logging_config import setup_logging
 from core.startup import init_db
+from route_registry import register_routes
 from services.elasticsearch import get_elasticsearch_client
 
 setup_logging()
