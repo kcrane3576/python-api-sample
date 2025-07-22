@@ -1,5 +1,5 @@
 # Use a slim, secure base image
-FROM python:3.11-slim
+FROM python:3.11-slim@sha256:5d5490d6fbe69e43359b5d8b1d2714f4a974602e52f7ffa4492e5e269d1ed47c
 
 # Set non-root user
 RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
