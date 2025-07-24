@@ -4,5 +4,7 @@ pytest==8.4.1
 uvicorn==0.35.0
 python-dotenv==1.0.1
 psycopg2-binary==2.9.10
-elasticsearch==9.0.2
 sqlalchemy==2.0.41
+
+# keep in sync with docker-compose
+elasticsearch==9.0.2
