@@ -1,8 +1,8 @@
-fastapi
-httpx
-pytest
-uvicorn
-python-dotenv
-psycopg2-binary
+fastapi==0.110.0
+httpx==0.27.0
+pytest==8.2.1
+uvicorn==0.29.0
+python-dotenv==1.0.1
+psycopg2-binary==2.9.9
 elasticsearch==8.12.1
 sqlalchemy==2.0.30
